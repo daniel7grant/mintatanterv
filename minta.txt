@@ -1,0 +1,14 @@
+<NotepadPlus>
+    <Project name="mintatanterv">
+        <Folder name="res">
+            <File name="res\down.png" />
+            <File name="res\fail.png" />
+            <File name="res\mecha.jpg" />
+            <File name="res\que.png" />
+            <File name="res\up.png" />
+        </Folder>
+        <File name="mintatanterv.html" />
+        <File name="stil.css" />
+        <File name="subjects.php" />
+    </Project>
+</NotepadPlus>
