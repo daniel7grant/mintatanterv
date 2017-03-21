@@ -130,18 +130,16 @@
 
 <div style="width:100%">
 	
-	<table>
-		<tr>
-			<td><p>1. félév</p></td>
-			<td><p>2. félév</p></td>
-			<td><p>3. félév</p></td>
-			<td><p>4. félév</p></td>
-			<td><p>5. félév</p></td>
-			<td><p>6. félév</p></td>
-			<td><p>7. félév</p></td>
-		</tr>
-	</table>
-	
+	<div class="subjects2">
+		<bme-container term="1"></bme-container>
+		<bme-container term="2"></bme-container>
+		<bme-container term="3"></bme-container>
+		<bme-container term="4"></bme-container>
+		<bme-container term="5"></bme-container>
+		<bme-container term="6"></bme-container>
+		<bme-container term="7"></bme-container>
+	</div>
+		
 	<div class="footer">
 		<div class="menu">
 			<div>Rendezés:</div>			
@@ -153,13 +151,14 @@
 		</div>
 		
 		<div class="subjects">
-			<bme-subject></bme-subject>
+			<bme-container></bme-container>
 		</div>
 	</div>
 
 	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
-	<script src="bme-subject.js"></script>
+	<script src="bme-container.js"></script>
+	<!-- <script src="bme-subject.js"></script> -->
 </div>
 
 
