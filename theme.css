@@ -1,0 +1,208 @@
+img{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+table{
+	width:100%;
+}
+
+td{
+	min-width: 150px;
+	width: 14.28%;
+	border: 1px solid black;
+	height: 200px;
+	vertical-align: top;
+	text-align:center;
+	border-radius: 10px;
+	position: relative;
+	padding: 0px;
+}
+
+td > p{
+	width: 100%;
+	text-align: center;
+	font-family: Rockwell;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0px 0px 5px 0px;
+	color: black;
+	position: relative;
+/*	background: rgba(255,255,255,0.8);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.08) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,0.8)), color-stop(100%, rgba(255,255,255,0.08)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.08) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.08) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.08) 100%);
+	background: radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.08) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;*/
+}
+
+td > p::after
+{
+	content: "";
+	height: 1px;
+	width: 80%;
+	border-bottom: 1px solid black;
+	position:absolute;
+	bottom:0px;
+	left:10%;
+}
+
+td > span{
+	position:absolute;
+	top:5px;
+	right:5px;
+}
+
+.is-draghover{
+	background-color:red;
+}
+
+.footer{
+	margin-top:20px;
+	width:99%;
+	min-width:1100px;
+	display:flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+}
+
+.menu{
+	display:inline-block;
+	vertical-align:top;
+	padding: 0px 10px 10px 10px;
+	margin-right:20px;
+	flex-shrink:1;
+}
+
+.sort{
+	margin: 0px 0px 5px 10px;
+	padding: 3px;
+	border: 1px solid rgb(100, 100, 100);
+	border-radius: 3px;
+	background-color: rgb(200, 200, 200);
+	font-size:15px;
+	cursor:pointer;
+}
+
+.sort:hover{
+	background-color: rgb(220, 220, 220);
+}
+
+.sort:active{
+	transition: all 0.2s;
+	background-color: rgb(255, 255, 255);
+}
+
+.subjects{
+	display:inline-block;
+	flex-grow: 4;
+}
+
+.subjcontainer{
+	background-color:white;
+	width:150px;
+	margin-right:5px;
+	max-width:150px;
+	white-space:nowrap;
+	display:inline-block;
+	position:relative;
+	text-align:left;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.subject{
+	width: 90%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: linear-gradient(0deg, rgba(242,246,248,0.8) 0%, rgba(255,255,255,0.3) 100%);
+	background-color: rgba(0, 58, 255, 0.5);
+	box-shadow: inset 0px 0px 15px 0px rgba(255, 255, 255, 1);
+	padding: 5px 5px 10px 10px;
+	border-radius: 5px;
+	position: relative;
+	transition: all 0.5s;
+	
+	text-align:center;
+}
+
+.subject.is-down{
+	padding-bottom: 25px;
+}
+
+.subject > span{
+	/*font-size: ?*/
+	position:relative;
+	display:inline-block;
+	cursor:move;
+	margin:0px;
+    vertical-align: middle;
+}
+
+.subject > div{
+	cursor:pointer;
+	width: 25px;
+	height: 25px;	
+    vertical-align: middle;
+}
+
+.subj-down{
+	background-color: transparent;
+	height: 18px;
+	width:100%;
+	border-top: 0px solid black;
+	position: absolute;
+	left: 10px;
+	bottom: 5px;
+	z-index: 9999;
+	vertical-align: top;
+}
+
+.subj-down > div{
+	display:inline-block;
+	position:relative;
+	cursor:pointer;
+	width: 18px;
+	height: 18px;
+	z-index: 9999;
+}
+
+.subj-down > .que{
+	background-image: url('res/que.png');
+	background-size: 100% 100%;
+}
+
+.subj-down > .fail{
+	background-image: url('res/fail.png');
+	background-size: 100% 100%;
+}
+
+.subj-down > .mark{
+	font-family: 'Arial';
+	font-size: 16px;
+	font-weight:bold;
+	font-style: italic;
+	line-height: 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.phantom{
+	background-color: rgba(128, 128, 128, 0.8);
+	color: gray;
+	opacity: 0.7;
+}
