@@ -9,4 +9,4 @@ Egy könyvtár a BME-s mintantantervek megtervezéséhez, megjelenítéséhez il
 * Informatív felület a tárgyakról, kreditszám, követelménytípus, előadások, gyakorlatok, laborok száma
 * Tárgyak felvétele, teljesítése vagy bukása, illetve ennek következményei (pl. csúszás)
 * Beépített átlagszámító (korrigált kreditindex, görgetett átlag, stb.)
-* Adatok biztonságos, lokális tárolása
+* Személyes adatok biztonságos, lokális tárolása
