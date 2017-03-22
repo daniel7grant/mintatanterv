@@ -42,5 +42,5 @@ var vu = new Vue({
 });
 
 var vu2 = new Vue({
-	el : '.subjects2'
+	el : '.terms'
 });

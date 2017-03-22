@@ -124,13 +124,14 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="theme.css">
+<link rel="stylesheet" type="text/css" href="bme-subject-theme.css">
+<link rel="stylesheet" type="text/css" href="bme-container-theme.css">
 </head>
 
 <body>
 
-<div style="width:100%">
-	
-	<div class="subjects2">
+<div class="wrapper">
+	<div class="terms">
 		<bme-container term="1"></bme-container>
 		<bme-container term="2"></bme-container>
 		<bme-container term="3"></bme-container>
@@ -140,29 +141,31 @@
 		<bme-container term="7"></bme-container>
 	</div>
 		
-	<div class="footer">
-		<div class="menu">
-			<div>Rendezés:</div>			
-			<div class="sort">Ábécé szerint</div>
-			<div class="sort">Kredit szerint</div>
-			<div class="sort">Félév szerint</div>
-			<div>Szűrés:</div>			
-			<div>(DROPDOWN)</div>
-		</div>
-		
+	<div class="aside">
 		<div class="subjects">
-			<bme-container></bme-container>
+			<div class="subjects-menu">
+				<div>Rendezés:</div>			
+				<div class="sort">Ábécé szerint</div>
+				<div class="sort">Kredit szerint</div>
+				<div class="sort">Félév szerint</div>
+				<div>Szűrés:</div>			
+				<div>(DROPDOWN)</div>
+			</div>
+			
+			<div class="subjects-remain">
+				<bme-container></bme-container>
+			</div>
+		</div>
+		<div class="information">
+			
 		</div>
 	</div>
+</div>
 
 	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
 	<script src="bme-container.js"></script>
 	<!-- <script src="bme-subject.js"></script> -->
-</div>
-
-
-
 </body>
 
 </html>
