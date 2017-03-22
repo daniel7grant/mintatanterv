@@ -1,0 +1,8 @@
+.bme-container{
+	border: 1px solid black;
+	margin: 20px;
+}
+
+.bme-container.term{
+	width:100%;
+}
