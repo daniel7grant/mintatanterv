@@ -1,7 +1,7 @@
-var cmp = Vue.component('bme-subject', {
+var BmeSubject = Vue.extend({
 	template : 	'\
-	<div class="subjcontainer" v-bind:id="subject.code" draggable="true">\
-		<div class="subject">\
+	<div class="subject" v-bind:id="subject.code" draggable="true">\
+		<div class="subj-title">\
 			{{subject.short}} ({{subject.credit}})\
 		</div>\
 		<!--<div class="subj-down">\
