@@ -1,8 +1,14 @@
 .bme-container{
-	border: 1px solid black;
-	margin: 20px;
+	margin: 5px 10px;
+	padding: 10px;
+	border: 1px solid #bbbbbb;
+	border-radius: 5px;
 }
 
 .bme-container.term{
-	width:100%;
+	min-height:80px;
+}
+
+.bme-container.is-drop{
+	box-shadow: inset 0px 0px 20px 0px rgba(128, 128, 128, 0.2)
 }
