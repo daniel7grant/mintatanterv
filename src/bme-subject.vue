@@ -1,5 +1,5 @@
 <template>
-	<div class="subject" v-bind:id="subject.code" draggable="true">
+	<div class="subject" v-bind:id="subject.code" v-on:dragstart="startdrag($event)" draggable="true">
 		<div class="subj-title">
 			{{subject.short}} ({{subject.credit}})
 		</div>
@@ -16,7 +16,19 @@
 
 <script>
 	export default {
-		props : ['subject']
+		props : ['subject'],
+		data : function() {
+			return {
+				subj : this.subject
+			};
+		},
+		methods : {
+			startdrag : function(ev){
+				ev.dataTransfer.setData("text/plain", ev.target.id);
+				ev.dataTransfer.setData("subjects", JSON.stringify(this.subjects[ev.target.id]));
+				this.$emit('subjdrag');
+			},
+		}
 	}
 </script>
 
