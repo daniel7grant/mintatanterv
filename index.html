@@ -2,11 +2,42 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>mintatanterv</title>
+		<title>Mintatanterv</title>
+		<link rel="stylesheet" type="text/css" href="theme.css">
 	</head>
 	<body>
-		<div id="app">
-			<bme-container></bme-container>
+		<h1>Mintatanterv</h1>
+		<div class="wrapper">
+			<div class="terms">
+				<bme-container v-bind:term="1"></bme-container>
+				<bme-container v-bind:term="2"></bme-container>
+				<bme-container v-bind:term="3"></bme-container>
+				<bme-container v-bind:term="4"></bme-container>
+				<bme-container v-bind:term="5"></bme-container>
+				<bme-container v-bind:term="6"></bme-container>
+				<bme-container v-bind:term="7"></bme-container>
+			</div>
+			<div class="aside">
+				<div class="subjects">
+					<div class="subjects-menu">
+						<span>Rendezés:</span>
+						<button class="sort">Ábécé szerint</button>
+						<button class="sort">Kredit szerint</button>
+						<button class="sort">Félév szerint</button>
+						<span>Szűrés:</span>
+						<span>(DROPDOWN)</span>
+					</div>
+
+					<div class="remain">
+						<bme-container></bme-container>
+					</div>
+				</div>
+				<div class="information">
+					<h2></h2>
+
+				</div>
+
+			</div>
 		</div>
 		<script src="/dist/build.js"></script>
 	</body>

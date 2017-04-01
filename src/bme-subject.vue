@@ -25,8 +25,8 @@
 		methods : {
 			startdrag : function(ev){
 				ev.dataTransfer.setData("text/plain", ev.target.id);
-				ev.dataTransfer.setData("subjects", JSON.stringify(this.subjects[ev.target.id]));
-				this.$emit('subjdrag');
+				ev.dataTransfer.setData("subject", JSON.stringify(this.subj));
+				this.$emit('subjdrag', this.subj);
 			},
 		}
 	}
