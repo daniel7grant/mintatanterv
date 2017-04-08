@@ -14,27 +14,25 @@
 
 <script>
 	import bmeSubject from './bme-subject.vue'
-	import subjects from './subjects.js'
+	import getdata from './getdata.js'
 
 	export default {
 		name: 'bme-container',
 		props: ['term'],
 		components: { bmeSubject },
 		data: function () {
-			if (this.term) return {subjects: {}, drophere : false};
-			else return {
-				subjects : subjects,
+			var term = this.term || false;
+			return {
+				subjects : getdata(term),
 				drophere : false
 			};
 		},
 		methods: {
 			dragenter: function(ev){
-				console.log(1);
 				var subj = JSON.parse(ev.dataTransfer.getData("text") || '{}');
 				for(var i in this.subjects)
 				{
 					if(this.subjects[i].code == subj.code){
-						console.log(2);
 						this.drophere = false;
 						return true;
 					}
