@@ -14,16 +14,15 @@
 
 <script>
 	import bmeSubject from './bme-subject.vue'
-	import getdata from './getdata.js'
+	import { getdata, setdata } from './accessdata.js'
 
 	export default {
 		name: 'bme-container',
 		props: ['term'],
 		components: { bmeSubject },
 		data: function () {
-			var term = this.term || false;
 			return {
-				subjects : getdata(term),
+				subjects : getdata(this.term || false),
 				drophere : false
 			};
 		},
@@ -37,7 +36,6 @@
 						return true;
 					}
 				}
-
 				this.drophere = true;
 				ev.preventDefault();
 			},
@@ -55,12 +53,14 @@
 				this.drophere = false;
 				var subj = JSON.parse(ev.dataTransfer.getData("text"));
 				this.subjects[subj.code] = subj;
+				setdata(this.term || false, this.subjects);
 			},
 			remove: function(code){
 				for(var i in this.subjects)
 				{
 					if(this.subjects[i].code == code){
-						return this.$delete(this.subjects, i);
+						this.$delete(this.subjects, i);
+						setdata(this.term || false, this.subjects);
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 import subjects from './subjects.js'
-export default function(term){
+export function getdata(term){
 	if(localStorage){
 		if(term){
 			if(localStorage['subject' + term])
@@ -13,6 +13,16 @@ export default function(term){
 				localStorage.remain = JSON.stringify(subjects);
 				return subjects;
 			}
+		}
+	}
+}
+export function setdata(term, object){
+	if(localStorage){
+		if(term){
+			localStorage['subject' + term] = JSON.stringify(object);
+		}
+		else {
+			localStorage.remain = JSON.stringify(object);
 		}
 	}
 }
