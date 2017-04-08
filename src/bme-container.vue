@@ -1,11 +1,13 @@
 <template>
-	<div v-bind:class="{ 'bme-container' : true, 'term' : term }"
-		 v-on:dragover="contenter($event)" v-on:dragleave="contleave($event)" v-on:drop="contdrop($event)">
+	<div v-bind:class="{ 'bme-container' : true, 'term' : term, 'isdrop' : drophere }"
+			v-on:dragenter="dragenter($event)"
+			v-on:dragover="dragover($event)"
+			v-on:dragleave="dragleave($event)"
+			v-on:drop="drop($event)">
 		<bme-subject v-for="(subj, index) in subjects"
 					 v-bind:key="subj"
 					 v-bind:subject="subj"
-					 v-on:subjdrag="dragsubj($event)">
-
+					 v-on:remove="remove($event)">
 		</bme-subject>
 	</div>
 </template>
@@ -17,49 +19,52 @@
 	export default {
 		name: 'bme-container',
 		props: ['term'],
-		components: {bmeSubject},
+		components: { bmeSubject },
 		data: function () {
-			if (this.term == 1) {
-				return {
-					subjects: {
-						"BMEGEFOAMA1": {
-							"code": "BMEGEFOAMA1",
-							"name": "Aktuátortechnika",
-							"short": "Aktuátortechnika",
-							"exam": "1",
-							"credit": "3",
-							"term": "6",
-							"crossterm": "0"
-						}
-					}
-				};
-			}
-			if (this.term) return {subjects: {}};
-			else return subjects;
+			if (this.term) return {subjects: {}, drophere : false};
+			else return {
+				subjects : subjects,
+				drophere : false
+			};
 		},
 		methods: {
-			dragsubj: function (ev) {
-				//this.subjects[ev.code] = undefined;
-			},
-			contenter: function (ev) {
-				ev.target.classList.add('isdrop');
+			dragenter: function(ev){
+				console.log(1);
+				var subj = JSON.parse(ev.dataTransfer.getData("text") || '{}');
+				for(var i in this.subjects)
+				{
+					if(this.subjects[i].code == subj.code){
+						console.log(2);
+						this.drophere = false;
+						return true;
+					}
+				}
+
+				this.drophere = true;
 				ev.preventDefault();
 			},
-			contleave: function (ev) {
-				ev.target.classList.remove('isdrop');
+			dragover: function(ev){
+				if(this.drophere){
+					ev.dataTransfer.dropEffect = "move";
+					ev.preventDefault();
+				}
+			},
+			dragleave: function(ev){
+				this.drophere = false;
 				ev.preventDefault();
 			},
-			contdrop: function (ev) {
-				ev.target.classList.remove('isdrop');
-				console.log('out');
-				let subject = JSON.parse(ev.dataTransfer.getData("subject"));
-				console.log(subject);
-				console.log(subject.code);
-				this.subjects[subject.code] = subject;
-				console.log(this.subjects);
-				ev.dataTransfer.clearData();
-				console.log(this.subjects);
-				ev.preventDefault();
+			drop: function(ev){
+				this.drophere = false;
+				var subj = JSON.parse(ev.dataTransfer.getData("text"));
+				this.subjects[subj.code] = subj;
+			},
+			remove: function(code){
+				for(var i in this.subjects)
+				{
+					if(this.subjects[i].code == code){
+						return this.$delete(this.subjects, i);
+					}
+				}
 			}
 		}
 	}

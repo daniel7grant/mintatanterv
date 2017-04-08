@@ -11,6 +11,10 @@
   "dependencies": {
     "vue": "^2.2.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonkom7/mintatanterv.git"
+  },
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
