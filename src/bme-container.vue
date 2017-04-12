@@ -7,6 +7,7 @@
 		<bme-subject v-for="(subj, index) in subjects"
 					 v-bind:key="subj"
 					 v-bind:subject="subj"
+					 v-show="filtered[index]"
 					 v-on:remove="remove($event)">
 		</bme-subject>
 	</div>
@@ -18,13 +19,28 @@
 
 	export default {
 		name: 'bme-container',
-		props: ['term'],
+		props: [ 'term' , 'filter', 'colormode' ],
 		components: { bmeSubject },
 		data: function () {
 			return {
 				subjects : getdata(this.term || false),
 				drophere : false
 			};
+		},
+		computed:{
+			filtered : function(){
+				var filt = {};
+				for(var i in this.subjects)
+				{
+					if(this.filter){
+						filt[i] = (this.subjects[i].short.toLowerCase().indexOf(this.filter.toLowerCase()) > -1);
+					}
+					else{
+						filt[i] = true;
+					}
+				}
+				return filt;
+			}
 		},
 		methods: {
 			dragenter: function(ev){

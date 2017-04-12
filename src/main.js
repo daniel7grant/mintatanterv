@@ -2,9 +2,13 @@ import Vue from 'vue'
 import BmeContainer from './bme-container.vue'
 
 new Vue({
-	el: '.remain',
-	components :{
+	el : '.subjects',
+	components : {
 		BmeContainer
+	},
+	data : {
+		filter : '',
+		colormode : 0
 	}
 });
 

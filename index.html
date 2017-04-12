@@ -25,11 +25,11 @@
 						<button class="sort">Kredit szerint</button>
 						<button class="sort">Félév szerint</button>
 						<span>Szűrés:</span>
-						<span>(DROPDOWN)</span>
+						<input v-model="filter">
 					</div>
 
 					<div class="remain">
-						<bme-container></bme-container>
+						<bme-container v-bind:filter="filter" v-bind:colormode="colormode"></bme-container>
 					</div>
 				</div>
 				<div class="information">
