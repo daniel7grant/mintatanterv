@@ -68,7 +68,7 @@
 			drop: function(ev){
 				this.drophere = false;
 				var subj = JSON.parse(ev.dataTransfer.getData("text"));
-				this.subjects[subj.code] = subj;
+				this.$set(this.subjects, subj.code, subj);
 				setdata(this.term || false, this.subjects);
 			},
 			remove: function(code){
