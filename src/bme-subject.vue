@@ -1,6 +1,6 @@
 <template>
 	<div v-bind:class="{ subject: true, isdragged : isdrag }"
-		v-bind:id="subject.code" v-on:dragstart="drag($event)" v-on:dragend="end($event)" v-on:dragover="pass($event)" draggable="true">
+		v-bind:id="subject.code" v-on:dragstart="drag($event)" v-on:dragend="end($event)" v-on:dragenter="pass($event)" draggable="true">
 		<div class="subj-title">
 			{{subject.short}} ({{subject.credit}})
 		</div>
@@ -29,12 +29,11 @@
 				ev.dataTransfer.setData("text/plain", JSON.stringify(this.subject));
 			},
 			pass: function (ev) {
-				console.log(1);
+				this.$emit('pass');
 				return true;
 			},
 			end: function(ev){
 				this.isdrag = false;
-				console.log(ev.dataTransfer.dropEffect);
 				if(ev.dataTransfer.dropEffect === "move")
 					this.$emit('remove', this.subject.code);
 			}
