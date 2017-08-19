@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jonkom7/mintatanterv.git"
+    "url": "git://github.com/daniel7grant/mintatanterv.git"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
