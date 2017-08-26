@@ -1,4 +1,4 @@
-export default [
+var REQUIRE = [
 	{"subject": "BMETE90AX02", "requires": "BMETE90AX00"},
 	{"subject": "BMETE90AX10", "requires": "BMETE90AX02"},
 	{"subject": "BMETE15AX02", "requires": "BMETE90AX00"},
@@ -34,4 +34,14 @@ export default [
 	{"subject": "BMEGERIAM6J", "requires": "BMEGEMIAMG1"},
 	{"subject": "BMEGEFOAMV1", "requires": "BMEVIAUA010"},
 	{"subject": "BMEGEVGAG14", "requires": "BMEGEFOAMM0"}
-]
+];
+
+export default function(code, requirements = true){
+	return REQUIRE.filter(function(req){
+		if(requirements) return req.subject === code;
+		else return req.requires === code;
+	}).map(function(req){
+		if(requirements) return req.requires;
+		else return req.subject;
+	});
+}

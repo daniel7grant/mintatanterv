@@ -36,6 +36,7 @@ h2{
 }
 
 .aside > .information {
+	margin: 5px 10px;
 	flex-grow: 1;
 }
 

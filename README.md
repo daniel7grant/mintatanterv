@@ -10,7 +10,6 @@ Egy könyvtár a BME-s mintantantervek megtervezéséhez, megjelenítéséhez il
 * Tárgyak felvétele, teljesítése vagy bukása, illetve ennek következményei (pl. csúszás)
 * Beépített átlagszámító (korrigált kreditindex, görgetett átlag, stb.)
 * Személyes adatok biztonságos, lokális tárolása
-* Adatok biztonságos, lokális tárolása
 
 ## Telepítés
 

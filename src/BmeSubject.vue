@@ -1,5 +1,9 @@
 <template>
-	<div v-bind:class="{ 'subject': true, 'is-dragged' : isdrag, 'is-detailed' : isDetailed }"
+	<div v-bind:class="{ 'subject': true, 'is-dragged' : isdrag,
+		'is-detailed' : detailedSubj && detailedSubj.code === subject.code,
+		'is-required' : detailedSubj && continuationList.indexOf(detailedSubj.code) > -1,
+		'is-continue' : detailedSubj && requirementList.indexOf(detailedSubj.code) > -1,
+		 }"
 		 v-bind:id="subject.code"
 		 v-on:dragstart="drag($event)"
 		 v-on:dragenter="pass($event)"
@@ -23,11 +27,14 @@
 </template>
 
 <script>
+	import getreq from './requires.js'
 	export default {
-		props: ['subject', 'is-detailed'],
+		props: ['subject', 'detailed-subj'],
 		data: function () {
 			return {
-				isdrag: false
+				isdrag: false,
+//				requirementList: [],
+//				continuationList: []
 			};
 		},
 		methods: {
@@ -45,9 +52,25 @@
 				if (ev.dataTransfer.dropEffect === "move")
 					this.$emit('remove', this.subject.code);
 			},
-			detailed:function (subj, click){
-				this.$emit('detailed', { subject: subj, clicked: click });
+			detailed: function (subj, click) {
+				this.$emit('detailed', {subject: subj, clicked: click});
 			}
+		},
+		computed: {
+			requirementList: function () {
+				return getreq(this.subject.code);
+			},
+			continuationList: function () {
+				return getreq(this.subject.code, false);
+			}
+		},
+		mounted: function () {
+//			for (let i = 0; getreq(this.subject.code); i++) {
+//
+//			}
+//			for (let i = 0; getreq(this.subject.code, false); i++) {
+//
+//			}
 		}
 	}
 </script>
@@ -89,8 +112,16 @@
 		overflow: hidden;
 	}
 
-	.subject.is-detailed .subj-title{
-		background-color:#808080;
+	.subject.is-detailed .subj-title {
+		background-color: #808080;
+	}
+
+	.subject.is-required .subj-title {
+		background-color: red;
+	}
+
+	.subject.is-continue .subj-title {
+		background-color: blue;
 	}
 
 	.subj-title.is-down {

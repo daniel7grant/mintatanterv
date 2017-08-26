@@ -13,6 +13,7 @@
 			<bme-container v-for="term in 7"
 				v-bind:term="term"
 				v-bind:detailed-subject="detailedSubject"
+				v-bind:detailed-hover="detailedHover"
 				v-on:detailed="detailed($event)">
 				{{term}}. félév
 			</bme-container>

@@ -26,3 +26,7 @@ export function setdata(term, object){
 		}
 	}
 }
+
+export function getsubject(code) {
+	return subject[code];
+}

@@ -11,7 +11,7 @@
 		<bme-subject v-for="(subj, index) in subjects"
 					 v-bind:key="subj.code"
 					 v-bind:subject="subj"
-					 v-bind:is-detailed="detailedSubject && detailedSubject.code == subj.code"
+					 v-bind:detailed-subj="detailedSubject"
 					 v-show="filtered(subj)"
 					 v-on:pass="passed()"
 					 v-on:remove="remove($event)"
@@ -26,7 +26,7 @@
 
 	export default {
 		name: 'bme-container',
-		props: ['term', 'filter', 'colormode', 'detailed-subject'],
+		props: ['term', 'filter', 'colormode', 'detailed-subject', 'detailed-hover'],
 		components: {BmeSubject},
 		data: function () {
 			return {
@@ -87,7 +87,7 @@
 
 <style scoped>
 	.bme-container {
-		margin: 5px 0px;
+		margin: 5px 10px;
 		padding: 10px;
 		padding-left: 2.5em;
 		border: 1px solid #bbbbbb;
