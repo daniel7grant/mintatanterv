@@ -36,12 +36,25 @@ var REQUIRE = [
 	{"subject": "BMEGEVGAG14", "requires": "BMEGEFOAMM0"}
 ];
 
+// export default function(code, requirements = true){
+// 	return REQUIRE.filter(function(req){
+// 		if(requirements) return req.subject === code;
+// 		else return req.requires === code;
+// 	}).map(function(req){
+// 		if(requirements) return req.requires;
+// 		else return req.subject;
+// 	});
+// }
 export default function(code, requirements = true){
-	return REQUIRE.filter(function(req){
-		if(requirements) return req.subject === code;
-		else return req.requires === code;
-	}).map(function(req){
-		if(requirements) return req.requires;
-		else return req.subject;
+	let list = [];
+	code.map(function(c){
+		list = list.concat(REQUIRE.filter(function(req){
+			if(requirements) return req.subject === c;
+			else return req.requires === c;
+		}).map(function(req){
+			if(requirements) return req.requires;
+			else return req.subject;
+		}));
 	});
+	return list;	
 }

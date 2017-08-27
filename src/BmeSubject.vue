@@ -1,8 +1,6 @@
 <template>
 	<div v-bind:class="{ 'subject': true, 'is-dragged' : isdrag,
 		'is-detailed' : detailedSubj && detailedSubj.code === subject.code,
-		'is-required' : detailedSubj && continuationList.indexOf(detailedSubj.code) > -1,
-		'is-continue' : detailedSubj && requirementList.indexOf(detailedSubj.code) > -1,
 		 }"
 		 v-bind:id="subject.code"
 		 v-on:dragstart="drag($event)"
@@ -12,7 +10,7 @@
 		 v-on:mouseleave="detailed()"
 		 v-on:click="detailed(subject, true)"
 		 draggable="true">
-		<div class="subj-title">
+		<div class="subj-title" v-bind:style="{'background-color' : reqColor}">
 			{{subject.short}}
 		</div>
 		<!--<div class="subj-down">
@@ -33,8 +31,8 @@
 		data: function () {
 			return {
 				isdrag: false,
-//				requirementList: [],
-//				continuationList: []
+				requirementLists: [],
+				continuationLists: []
 			};
 		},
 		methods: {
@@ -57,20 +55,31 @@
 			}
 		},
 		computed: {
-			requirementList: function () {
-				return getreq(this.subject.code);
-			},
-			continuationList: function () {
-				return getreq(this.subject.code, false);
+			reqColor: function () {
+				if (this.detailedSubj) {
+					for (let i = 1; this.requirementLists[i] && this.requirementLists[i].length ; i++) {
+						if (this.requirementLists[i].indexOf(this.detailedSubj.code) > -1)
+							return 'rgba(255, 0, 0, ' + (1 - (i-1) * 0.25) + ')';
+					}
+					for (let i = 1; this.continuationLists[i] && this.continuationLists[i].length; i++) {
+						if (this.continuationLists[i].indexOf(this.detailedSubj.code) > -1)
+							return 'rgba(0, 0, 255, ' + (1 - (i-1) * 0.25) + ')';
+					}
+				}
+				return '';
 			}
 		},
 		mounted: function () {
-//			for (let i = 0; getreq(this.subject.code); i++) {
-//
-//			}
-//			for (let i = 0; getreq(this.subject.code, false); i++) {
-//
-//			}
+			let k = 0;
+			this.requirementLists[0] = [this.subject.code];
+			do {
+				this.requirementLists[++k] = getreq(this.requirementLists[k - 1]);
+			} while (this.requirementLists[k] && this.requirementLists[k].length);
+			k = 0;
+			this.continuationLists[0] = [this.subject.code];
+			do {
+				this.continuationLists[++k] = getreq(this.continuationLists[k - 1], false);
+			} while (this.continuationLists[k] && this.continuationLists[k].length);
 		}
 	}
 </script>
