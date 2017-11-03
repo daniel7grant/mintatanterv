@@ -30,7 +30,7 @@
 
 <style>
 	.bme-details {
-		height: 100%;
+		/*height: 100%;*/
 		margin: 5px 0px;
 		padding: 10px;
 		padding-left: 2.5em;
