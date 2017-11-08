@@ -30,7 +30,7 @@
 		components: {BmeSubject},
 		data: function () {
 			return {
-				subjects: getdata(this.term || false),
+				subjects: getdata(this.term),
 				drophere: false,
 				cancelRemove: false
 			};
@@ -126,7 +126,7 @@
 		z-index: 100;
 		font-size: 1.6em;
 		text-transform: uppercase;
-		text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 10px;
+		/*text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 10px;*/
 	}
 
 	.subject-credits-aside{

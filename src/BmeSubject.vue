@@ -13,19 +13,20 @@
 		<div class="subj-title" v-bind:style="{'background-color' : reqColor}">
 			{{subject.short}}
 		</div>
-		<!--<div class="subj-down">
-			<div class="que" draggable="false"></div>
+		<div v-bind:class="{'subj-down' : true, 'is-open' : detailedSubj && detailedSubj.code === subject.code}">
+			<div class="fail" draggable="false">X</div>
 			<div class="mark" draggable="false">2</div>
 			<div class="mark" draggable="false">3</div>
 			<div class="mark" draggable="false">4</div>
 			<div class="mark" draggable="false">5</div>
 			<div class="fail" draggable="false"></div>
-		</div>-->
+		</div>
 	</div>
 </template>
 
 <script>
 	import getreq from './requires.js'
+
 	export default {
 		props: ['subject', 'detailed-subj'],
 		data: function () {
@@ -51,19 +52,23 @@
 					this.$emit('remove', this.subject.code);
 			},
 			detailed: function (subj, click) {
-				this.$emit('detailed', {subject: subj, clicked: click});
+				if (click) {
+					if (this.detailedSubj && this.detailedSubj.code === this.subject.code)
+						return this.$emit('detailed', {subject: {}, clicked: click});
+				}
+				return this.$emit('detailed', {subject: subj, clicked: click});
 			}
 		},
 		computed: {
 			reqColor: function () {
 				if (this.detailedSubj) {
-					for (let i = 1; this.requirementLists[i] && this.requirementLists[i].length ; i++) {
+					for (let i = 1; this.requirementLists[i] && this.requirementLists[i].length; i++) {
 						if (this.requirementLists[i].indexOf(this.detailedSubj.code) > -1)
-							return 'rgba(255, 0, 0, ' + (1 - (i-1) * 0.25) + ')';
+							return 'rgba(255, 0, 0, ' + (1 - (i - 1) * 0.25) + ')';
 					}
 					for (let i = 1; this.continuationLists[i] && this.continuationLists[i].length; i++) {
 						if (this.continuationLists[i].indexOf(this.detailedSubj.code) > -1)
-							return 'rgba(0, 0, 255, ' + (1 - (i-1) * 0.25) + ')';
+							return 'rgba(0, 0, 255, ' + (1 - (i - 1) * 0.25) + ')';
 					}
 				}
 				return '';
@@ -99,6 +104,7 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+		overflow: hidden;
 	}
 
 	.subject.is-dragged {
@@ -160,9 +166,15 @@
 		border-top: 0px solid black;
 		position: absolute;
 		left: 10px;
-		bottom: 5px;
+		bottom: -18px;
 		z-index: 9999;
 		vertical-align: top;
+		transition: 0.3s;
+	}
+
+	.subj-down.is-open {
+		bottom: 5px;
+		transition: 0.3s;
 	}
 
 	.subj-down > div {

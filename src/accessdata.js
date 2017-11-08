@@ -1,24 +1,22 @@
 import subjects from './subjects.js'
-export function getdata(term){
-	if(localStorage){
-		if(term){
-			if(localStorage['subject' + term])
-				return JSON.parse(localStorage['subject' + term]) || {};
-			else return {};
-		}
+export function getdata(term) {
+	if (localStorage && term) {
+		if (localStorage['subject' + term])
+			return JSON.parse(localStorage['subject' + term]) || {};
 		else {
-			if(localStorage.remain) return JSON.parse(localStorage.remain);
-			else {
-				//fetch API call to server
-				localStorage.remain = JSON.stringify(subjects);
-				return subjects;
+			let termsubjects = {};
+			for (let code in subjects) {
+				if(subjects[code].term === term.toString())
+					termsubjects[code] = subjects[code];
 			}
+			return termsubjects;
 		}
 	}
 }
-export function setdata(term, object){
-	if(localStorage){
-		if(term){
+
+export function setdata(term, object) {
+	if (localStorage) {
+		if (term) {
 			localStorage['subject' + term] = JSON.stringify(object);
 		}
 		else {
@@ -27,6 +25,10 @@ export function setdata(term, object){
 	}
 }
 
+export function cleardata(){
+	localStorage.clear();
+}
+
 export function getsubject(code) {
-	return subject[code];
+	return subjects[code];
 }
