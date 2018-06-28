@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans')
+
+spacing = 5px
+min-term = 100px
+font-size = 14px
+
+body {
+	font-family: 'Noto Sans', sans-serif 
+	font-size: 13px
+}
+
+h1{
+	font-size:2.5em
+	margin-top:0.2em
+	margin-bottom:0.5em
+}
+
+h2{
+	font-size:2em
+	margin: 0.5em 0em
+}
+
+.App {
+  display: flex
+  flex-direction: column
+  position: relative
+  width: 95%
+  height: 95vh
+  margin: 1%
+  max-height: 95vh
+}
+
+#header {
+  margin-bottom: 1%
+}
+
+#main {
+  display: flex
+  height: 90%
+  max-height: 90%
+}
+
+#left-sidebar {
+  padding-right: 0.5%
+  flex: 1 0 auto
+  width: 20%
+  max-width: 20%
+  overflow-y: scroll
+  height: 100%
+  max-height: 100%
+}
+
+#main-body {
+  flex: 1 0 auto
+}
+
+.Subject {
+	display: inline-block
+	padding: 1.5%
+	margin: 1%
+	border: 1px #cccccc solid
+	border-radius: 5px
+	transition: all 0.5s
+	cursor: move
+	user-select: none
+
+	&.chosen {
+		color: white
+	}
+
+	&.filtered {
+		opacity: 0.5
+		pointer-events: none
+	}
+}
+
+.undrag {
+	pointer-events: none
+}
+
+.Term {
+	position: relative
+	margin-bottom: spacing
+	padding: spacing
+	padding-left: 3 * spacing + 1.6 * font-size
+	border: 1px solid black
+	border-radius: spacing
+	font-size: font-size
+	min-height: min-term
+
+	h2 {
+		position: absolute
+		left: 0
+		top: 100%
+		padding-top: spacing
+		padding-left: 2*spacing
+		transform: rotate(-90deg)
+		transform-origin: 0 0
+		z-index: 100
+		font-size: 1.6*font-size
+		text-transform: uppercase
+		user-select: none
+	}
+
+	.credits {
+		position: absolute
+		left: 0
+		top: 0
+		// top: 100%
+		// padding-top: spacing
+		// padding-left: 2*spacing
+		// transform: rotate(-90deg)
+		// transform-origin: 100% 100%
+		z-index: 100
+		font-size: 1.2*font-size
+		user-select: none
+	}
+
+	.add {
+		display: inline-block
+		padding: 1.5%
+		margin: 1.5%
+		border: 1px #CCCCCC solid
+		border-radius: 5px
+		cursor: pointer
+	}
+	&.isdragover {
+		background-color: red
+	}
+}
+
+.undrag {
+	pointer-events: none
+}

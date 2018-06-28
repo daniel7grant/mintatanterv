@@ -1,7 +1,15 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import { Provider } from 'react-redux'
+
+import './res/style/reset.styl'
+import './res/style/theme.styl'
+import App from './components/App'
+import store from './store'
 
 ReactDom.render(
-	<h1>Mintatanterv</h1>,
+	<Provider store={store}>
+		<App />
+	</Provider>,
 	document.getElementById('root')
 );

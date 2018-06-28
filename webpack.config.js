@@ -1,5 +1,6 @@
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
 	mode: 'development',
@@ -17,9 +18,18 @@ module.exports = {
 				options: {
 					name: '[name].[ext]?[hash]'
 				}
+			},
+			{
+				test: /\.styl$/,
+				loader: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'stylus-loader'
+				]
 			}
 		]
 	},
+	devtool: 'source-map',
 	devServer: {
 		contentBase: './dist',
 		port: 1325,
@@ -28,6 +38,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: 'src/index.html'
-		})
+		}),
+		new MiniCssExtractPlugin()
 	]
 }
