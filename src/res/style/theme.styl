@@ -21,37 +21,42 @@ h2{
 }
 
 .App {
-  display: flex
-  flex-direction: column
-  position: relative
-  width: 95%
-  height: 95vh
-  margin: 1%
-  max-height: 95vh
+	box-sizing: border-box
+	display: flex
+	flex-direction: column
+	position: relative
+	width: 100%
+	height: 100vh
+	padding: 1%
+	max-height: 100vh
 }
 
 #header {
-  margin-bottom: 1%
+	margin-bottom: 1%
+}
+
+.toolbar{
+	display:flex
 }
 
 #main {
-  display: flex
-  height: 90%
-  max-height: 90%
+	display: flex
+	height: 90%
+	max-height: 90%
 }
 
 #left-sidebar {
-  padding-right: 0.5%
-  flex: 1 0 auto
-  width: 20%
-  max-width: 20%
-  overflow-y: scroll
-  height: 100%
-  max-height: 100%
+	padding-right: 0.5%
+	flex: 1 0 auto
+	width: 20%
+	max-width: 20%
+	overflow-y: scroll
+	height: 100%
+	max-height: 100%
 }
 
 #main-body {
-  flex: 1 0 auto
+	flex: 1 0 auto
 }
 
 .Subject {
@@ -88,7 +93,7 @@ h2{
 	font-size: font-size
 	min-height: min-term
 
-	h2 {
+	.title {
 		position: absolute
 		left: 0
 		top: 100%

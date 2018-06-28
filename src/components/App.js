@@ -3,11 +3,15 @@ import SubjectSidebar from './SubjectSidebar'
 import { connect } from 'react-redux'
 import groupBy from 'lodash/groupBy'
 
-import {setFilter} from '../actions';
+import { setFilter, resetSubjects } from '../actions'
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidMount() {
+		this.inputFilter.focus();
 	}
 
 	render() {
@@ -15,11 +19,17 @@ class App extends React.Component {
 			<div className="App">
 				<div id="header">
 					<h1>Mintatanterv</h1>
-					<div>
-						<span>Szűrés: </span>
-						<input value={this.props.filter} onChange={this.props.onFilterChange} />
-						<br />
-						<span className="hint">Próbálj rövidítéseket, mint "matek a2", "mikmak", stb.</span>
+					<div className="toolbar">
+						<div>
+							<span>Szűrés: </span>
+							<input value={this.props.filter} ref={(ref) => this.inputFilter = ref}
+								onChange={this.props.onFilterChange} />
+							<br />
+							<span className="hint">Próbálj rövidítéseket, mint "matek a2", "mikmak", stb.</span>
+						</div>
+						<div>
+							<button onClick={this.props.reset}>Visszaállítás</button>
+						</div>
 					</div>
 				</div>
 				<div id="main">
@@ -35,18 +45,13 @@ class App extends React.Component {
 	}
 }
 
-function groupSubjects(subjects, filter) {
-	return groupBy(Object.keys(subjects).map((key) => Object.assign(subjects[key], {
-		isFiltered: !subjects[key].name.toLowerCase().includes(filter.toLowerCase())
-	})), 'term');
-}
-
 export default App = connect(
 	(state) => ({
 		filter: state.filter,
-		subjects: groupSubjects(state.subjects, state.filter)
+		subjects: groupBy(state.subjects, 'term')
 	}),
 	(dispatch) => ({
-		onFilterChange: (ev) => dispatch(setFilter(ev.target.value))
+		onFilterChange: (ev) => dispatch(setFilter(ev.target.value)),
+		reset : () => dispatch(resetSubjects())
 	})
 )(App);
