@@ -1,4 +1,4 @@
-[
+export default [
 	{
 		"id": "BMEGEFOAMA1",
 		"name": "Aktuátortechnika",

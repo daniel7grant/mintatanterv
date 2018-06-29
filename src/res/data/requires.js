@@ -1,4 +1,4 @@
-[
+export default [
 	{ "subject": "BMETE90AX02", "requires": "BMETE90AX00" },
 	{ "subject": "BMETE90AX10", "requires": "BMETE90AX02" },
 	{ "subject": "BMETE15AX02", "requires": "BMETE90AX00" },

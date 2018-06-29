@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import fuzzysearch from 'fuzzysearch'
 import { dragSubject, cancelDrag } from '../actions';
 
-
 class Subject extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,13 +21,13 @@ class Subject extends React.Component {
 
 	render() {
 		return (
-			<div id={this.props.subject.id}
+			<li id={this.props.subject.id}
 				className={"Subject " + (this.props.isFiltered ? 'filtered' : '')}
 				draggable="true"
 				onDragStart={this.dragStart}
 				onDragEnd={this.dragEnd}>
 				{this.props.subject.name}
-			</div>
+			</li>
 		);
 	}
 }

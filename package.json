@@ -1,48 +1,51 @@
 {
-  "name": "mintatanterv",
-  "description": "A project to plan BME mock curriculum",
-  "version": "1.0.0",
-  "author": "Grant",
-  "private": true,
-  "scripts": {
-    "dev": "webpack-dev-server --open",
-    "build": "webpack --progress --hide-modules"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
-  },
-  "dependencies": {
-    "fuzzysearch": "^1.0.3",
-    "lodash": "^4.17.10",
-    "mini-css-extract-plugin": "^0.4.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "redux-localstorage": "^0.4.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/daniel7grant/mintatanterv.git"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.2.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.2.0",
-    "react-test-renderer": "^16.4.1",
-    "style-loader": "^0.21.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
-    "webpack": "^4.12.2",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
-  }
+	"name": "mintatanterv",
+	"description": "A project to plan BME mock curriculum",
+	"version": "1.0.0",
+	"author": "Grant",
+	"private": true,
+	"scripts": {
+		"build": "webpack --progress --hide-modules",
+		"dev": "webpack-dev-server --open",
+		"test": "jest --color --config jest.config.js"
+	},
+	"babel": {
+		"presets": [
+			"es2015",
+			"react"
+		]
+	},
+	"dependencies": {
+		"fuzzysearch": "^1.0.3",
+		"lodash": "^4.17.10",
+		"mini-css-extract-plugin": "^0.4.0",
+		"react": "^16.4.1",
+		"react-dom": "^16.4.1",
+		"react-redux": "^5.0.7",
+		"redux": "^4.0.0",
+		"redux-localstorage": "^0.4.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/daniel7grant/mintatanterv.git"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-jest": "^23.2.0",
+		"babel-loader": "^7.1.4",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
+		"css-loader": "^0.28.11",
+		"enzyme": "^3.3.0",
+		"enzyme-adapter-react-16": "^1.1.1",
+		"html-webpack-plugin": "^3.2.0",
+		"jest": "^23.2.0",
+		"react-test-renderer": "^16.4.1",
+		"style-loader": "^0.21.0",
+		"stylus": "^0.54.5",
+		"stylus-loader": "^3.0.2",
+		"webpack": "^4.12.2",
+		"webpack-cli": "^3.0.8",
+		"webpack-dev-server": "^3.1.4"
+	}
 }

@@ -2,10 +2,6 @@ import React from 'react'
 import Term from './Term'
 
 export default class SubjectSidebar extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-
 	render() {
 		return (
 			<div className="SubjectSidebar">
